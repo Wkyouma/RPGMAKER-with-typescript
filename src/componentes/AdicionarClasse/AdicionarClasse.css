@@ -1,0 +1,110 @@
+.AdicionarClasse{
+    display: flex;
+    justify-content: center;    
+    margin: 80px 0;
+}
+.AdicionarClasse h3{
+    font-size: 30px;
+    
+}
+
+.AdicionarClasse form{
+    max-width: 80%;
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    padding: 36px 64px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    animation: slideIn 0.5s ease; 
+}
+
+.AdicionarClasse form:hover {
+    background-color: #E0E0E0; 
+    box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.15); 
+}
+
+input[type="color"] {
+ 
+    margin: 5%;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    outline: none;
+  }
+  
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+
+  }
+  
+  input[type="color"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="color"]:active {
+    transform: scale(0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  input[type="color"]:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 4px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+  }
+  
+  .AdicionarClasse .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .botao-ocultar {
+    position: absolute;
+    margin-top: -40px;
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .botao-adicionar {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .AdicionarClasse button:hover {
+    background-color: #0056b3;
+  }
+  .AdicionarClasse button.aberto {
+    transform: scale(0.8); /* Reduz o tamanho do botão */
+    padding: 8px 16px; /* Ajusta o padding */
+    background-color: #004080; /* Cor alterada para destaque */
+  }

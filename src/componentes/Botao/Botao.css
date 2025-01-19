@@ -1,0 +1,32 @@
+@keyframes buttonHover {
+    0% {
+        transform: scale(1) rotate(0deg);
+        background-color: #000000; /* Cor original do botão */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    25% {
+        transform: scale(1.1) rotate(5deg);
+        background-color: #000000; /* Cor ao passar o mouse */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+   
+   
+}
+
+.Botao {
+    margin-top: 3%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0dd26fd; /* Cor do botão */
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Transição para o hover */
+}
+
+
+.Botao:active {
+    animation: buttonHover 0.8s ease;
+    transform: scale(0.95); /* Efeito de pressionar o botão */
+}

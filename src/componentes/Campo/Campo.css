@@ -1,0 +1,33 @@
+
+.campo-text label {
+    display:block;
+    font-size: 24px;
+    
+}
+
+.campo-text input{
+    background-color: #fff;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.06);
+    width: 100%;
+    border: none;
+    padding: 24px;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+
+.campo-color{
+    display: flex;
+    justify-content: center;
+}
+.campolabel {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+}
+campo-color input{
+   
+    justify-content: center; /* Centraliza a label dentro da div */
+    align-items: center; 
+    height: 40px;
+    padding: 5px 10px   ;
+}
