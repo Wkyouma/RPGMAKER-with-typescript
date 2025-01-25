@@ -26,7 +26,8 @@ const Formulario = (props:FormularioProps) =>{
         nome,
         especie,
         imagem,
-        classe
+        classe,
+        favorito: false,
     })
     setNome('')
     setEspecie('')

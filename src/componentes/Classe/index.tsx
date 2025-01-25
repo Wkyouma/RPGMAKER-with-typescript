@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Card from '../Card/index'
+import Card from '../Card/index';
 import "./Classe.css";
 
 interface Aventureiro {
-  id: number;
+  id: string; // Mude de number para string
   nome: string;
   especie: string;
   imagem: string;
@@ -12,14 +12,14 @@ interface Aventureiro {
 
 interface TimeProps {
   corPrimaria: string;
+  corSecundaria: string;
   nome: string;
   aventureiros: Aventureiro[];
-  aoDeletar: (id: number) => void;
-  aoMudarCor: (novaCor: string, id: number) => void;
-  aoMudarCorPrimaria: (novaCor: string, id: number) => void;
-  id: number;
-  aoFavoritar: (id: number) => void;
-  corSecundaria: string;
+  aoDeletar: (id: string) => void; // Mude de number para string
+  aoMudarCor: (novaCor: string, id: string) => void; // Mude de number para string
+  aoMudarCorPrimaria: (novaCor: string, id: string) => void; // Mude de number para string
+  id: string; // Mude de number para string
+  aoFavoritar: (id: string) => void; // Mude de number para string
 }
 
 const Classe = (props: TimeProps) => {
@@ -37,7 +37,7 @@ const Classe = (props: TimeProps) => {
   };
 
   return (
-    props.aventureiros.length > 0 && (
+    props.aventureiros.length > 0 ? (
       <section className="Classe" style={{ backgroundColor: corAtual }}>
         <div className="inputs-cores">
           <input
@@ -71,7 +71,7 @@ const Classe = (props: TimeProps) => {
           ))}
         </div>
       </section>
-    )
+    ) : <React.Fragment></React.Fragment>
   );
 };
 

@@ -3,15 +3,25 @@ import { useState } from 'react';
 import Campo from '../Campo';
 import Botao from '../Botao';
 
-const AdicionarClasse = ({ aoAdicionarClasse }) => {
-  const [nomeClasse, setNomeClasse] = useState('');
-  const [corPrimaria, setCorPrimaria] = useState('#000000');
-  const [corSecundaria, setCorSecundaria] = useState('#FFFFFF');
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+interface NovaClasse {
+  nome: string;
+  corPrimaria: string;
+  corSecundaria: string;
+}
 
-  const AdicionarClasse = (e) => {
+interface AdicionarClasseProps {
+  aoAdicionarClasse: (novaClasse: NovaClasse) => void;
+}
+
+const AdicionarClasse: React.FC<AdicionarClasseProps> = ({ aoAdicionarClasse }) => {
+  const [nomeClasse, setNomeClasse] = useState<string>('');
+  const [corPrimaria, setCorPrimaria] = useState<string>('#000000');
+  const [corSecundaria, setCorSecundaria] = useState<string>('#FFFFFF');
+  const [mostrarFormulario, setMostrarFormulario] = useState<boolean>(false);
+
+  const adicionarClasse = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const novaClasse = {
+    const novaClasse: NovaClasse = {
       nome: nomeClasse || 'Nova Classe',
       corPrimaria: corPrimaria,
       corSecundaria: corSecundaria,
@@ -34,7 +44,7 @@ const AdicionarClasse = ({ aoAdicionarClasse }) => {
         {mostrarFormulario ? 'Ocultar Formulário' : 'Adicionar Nova Classe'}
       </button>
       {mostrarFormulario && (
-        <form onSubmit={AdicionarClasse}>
+        <form onSubmit={adicionarClasse}>
           <h3>Adicionar nova classe</h3>
           <div className="form-group">
             <Campo

@@ -1,4 +1,4 @@
-import {Banner} from './componentes/Banner';
+import { Banner } from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Classe from './componentes/Classe';
 import Footer from './componentes/footer';
@@ -6,9 +6,18 @@ import './App.css';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import AdicionarClasse from './componentes/AdicionarClasse';
+import { Iaventureiro } from './Shared/Interface/Iaventureiro';
+
+
+interface ClasseType {
+  id: string;
+  nome: string;
+  corPrimaria: string;
+  corSecundaria: string;
+}
 
 function App() {
-  const [Classes, setClasses] = useState([
+  const [Classes, setClasses] = useState<ClasseType[]>([
     { id: uuidv4(), nome: 'Bardo', corPrimaria: '#57C278', corSecundaria: '#09F7E9' },
     { id: uuidv4(), nome: 'Mago', corPrimaria: '#82CFFA', corSecundaria: '#E8F8FF' },
     { id: uuidv4(), nome: 'Necromante', corPrimaria: '#A60D15', corSecundaria: '#FDE7E8' },
@@ -17,22 +26,22 @@ function App() {
     { id: uuidv4(), nome: 'Druida', corPrimaria: '#228B22', corSecundaria: '#90EE90' },
   ]);
 
-  const especies = [
+  const especies: string[] = [
     'elfo', 'humano', 'anão', 'orc', 'hobbit', 'dragão', 'troll', 'goblin', 
     'centauro', 'fada', 'súcubo', 'demônio', 'licano', 'vampiro', 'quimera'
   ];
 
-  const [aventureiros, setAventureiros] = useState([]);
+  const [aventureiros, setAventureiros] = useState<Iaventureiro[]>([]);
 
-  const aoNovoAventureiroAdd = (aventureiro) => {
+  const aoNovoAventureiroAdd = (aventureiro: Omit<Iaventureiro, 'id' | 'favorito'>) => {
     setAventureiros([...aventureiros, { id: uuidv4(), favorito: false, ...aventureiro }]);
   };
 
-  const deletarAventureiro = (id) => {
+  const deletarAventureiro = (id: string) => {
     setAventureiros(aventureiros.filter((aventureiro) => aventureiro.id !== id));
   };
 
-  const resolverFavorito = (id) => {
+  const resolverFavorito = (id: string) => {
     setAventureiros(
       aventureiros.map((aventureiro) =>
         aventureiro.id === id ? { ...aventureiro, favorito: !aventureiro.favorito } : aventureiro
@@ -40,7 +49,7 @@ function App() {
     );
   };
 
-  const mudarCorSecundaria = (cor, id) => {
+  const mudarCorSecundaria = (cor: string, id: string) => {
     setClasses(
       Classes.map((classe) =>
         classe.id === id ? { ...classe, corSecundaria: cor } : classe
@@ -48,7 +57,7 @@ function App() {
     );
   };
 
-  const mudarCorPrimaria = (cor, id) => {
+  const mudarCorPrimaria = (cor: string, id: string) => {
     setClasses(
       Classes.map((classe) =>
         classe.id === id ? { ...classe, corPrimaria: cor } : classe
@@ -56,7 +65,7 @@ function App() {
     );
   };
 
-  const adicionarClasse = (novaClasse) => {
+  const adicionarClasse = (novaClasse: Omit<ClasseType, 'id'>) => {
     setClasses([...Classes, { id: uuidv4(), ...novaClasse }]);
   };
 
@@ -76,7 +85,7 @@ function App() {
           nome={classe.nome}
           corPrimaria={classe.corPrimaria}
           corSecundaria={classe.corSecundaria}
-          aventureiros={aventureiros.filter((aventureiro) => aventureiro.classe === classe.nome)}
+          aventureiros={aventureiros.filter(aventureiro => aventureiro.classe === classe.nome)}
           aoDeletar={deletarAventureiro}
           aoFavoritar={resolverFavorito}
           aoMudarCor={mudarCorSecundaria}
