@@ -1,7 +1,17 @@
 import './Card.css';
 import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
-const Card = ({ nome, imagem, especie, corDeFundo, aoDeletar, aoFavoritar, favorito }) => {
+interface CardProps{
+  nome: string;
+  imagem: string;
+  especie: string;
+  corDeFundo: string;
+  favorito: boolean;  // Novo campo para indicar se o card está favoritado ou não. Inicialmente, é false.  // Novo método para favoritar o card.  // Novo método para desfavoritar o card.  // Novo evento para ao deletar o card.  // Novo evento para ao favoritar o card.  // Novo estado para o card, indicando se ele está favoritado ou não.
+  aoDeletar: () => void;
+  aoFavoritar: () => void;
+  
+}
+const Card = ({ nome, imagem, especie, corDeFundo, aoDeletar, aoFavoritar, favorito }: CardProps) => {
   function favoritar() {
     aoFavoritar();
   }
